@@ -5,10 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.Random;
-
-import java.lang.Math;
-
 public class CreateAccountTest extends BaseTest {
 
     @Test
@@ -60,33 +56,4 @@ public class CreateAccountTest extends BaseTest {
         driver.findElement(By.cssSelector("a[href*=logout]")).click();
     }
 
-    public String produceRandomString(int length) {
-        String possible = "abcdefghijklmnopqrstuvwxyz";
-        Random rnd = new Random();
-        String str = "";
-
-        for( int i = 0; i < length; i++ ) {
-            //str += possible.charAt((int) Math.floor(Math.random() * possible.length()));
-            str += possible.charAt(rnd.nextInt(possible.length()));
-        }
-
-        return str;
-    }
-
-    public String produceRandomNumberString(int length) {
-        String possible = "0123456789";
-        Random rnd = new Random();
-        String str = "";
-
-        for( int i = 0; i < length; i++ ) {
-            //str += possible.charAt((int) Math.floor(Math.random() * possible.length()));
-            str += possible.charAt(rnd.nextInt(possible.length()));
-        }
-
-        return str;
-    }
-
-    public int getRandomIntFromInterval(Integer min, Integer max) {
-        return (int)Math.floor (min + (Math.random() * ((max - min) + 1)));
-    }
 }

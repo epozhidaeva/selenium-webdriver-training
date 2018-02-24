@@ -5,16 +5,14 @@ import org.junit.Before;
 import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidSelectorException;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
@@ -33,7 +31,7 @@ public class BaseTest {
         wait = new WebDriverWait(driver, 10);
     }
 
-    @After
+    //@After
     public void stop() {
         driver.quit();
         driver = null;
@@ -71,6 +69,42 @@ public class BaseTest {
         List<String> sortedList = new ArrayList<>(list);
         Collections.sort(sortedList);
         assertEquals("Список не отсортирован по алфавиту", sortedList, list);
+    }
+
+    public String produceRandomString(int length) {
+        String possible = "abcdefghijklmnopqrstuvwxyz";
+        Random rnd = new Random();
+        String str = "";
+
+        for( int i = 0; i < length; i++ ) {
+            //str += possible.charAt((int) Math.floor(Math.random() * possible.length()));
+            str += possible.charAt(rnd.nextInt(possible.length()));
+        }
+
+        return str;
+    }
+
+    public String produceRandomNumberString(int length) {
+        String possible = "0123456789";
+        Random rnd = new Random();
+        String str = "";
+
+        for( int i = 0; i < length; i++ ) {
+            //str += possible.charAt((int) Math.floor(Math.random() * possible.length()));
+            str += possible.charAt(rnd.nextInt(possible.length()));
+        }
+
+        return str;
+    }
+
+    public int getRandomIntFromInterval(Integer min, Integer max) {
+        return (int)Math.floor (min + (Math.random() * ((max - min) + 1)));
+    }
+
+    public void changeCheckBoxState(WebElement element, boolean state) {
+        if (element.isSelected() != state) {
+            element.click();
+        }
     }
 
 }
