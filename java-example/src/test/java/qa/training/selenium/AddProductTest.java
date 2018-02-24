@@ -40,7 +40,7 @@ public class AddProductTest extends BaseTest {
         driver.findElement(By.cssSelector("[name='date_valid_to']")).sendKeys(Keys.HOME + "11.04.2018");
 
         File image = new File("src/test/resources/image.png");
-        driver.findElement(By.cssSelector("input[name='new_images[]']")).sendKeys(image.getAbsolutePath());
+        driver.findElement(By.cssSelector("[name='new_images[]']")).sendKeys(image.getAbsolutePath());
 
         //Вкладка Information
         driver.findElement(By.cssSelector("a[href='#tab-information']")).click();
