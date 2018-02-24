@@ -1,14 +1,12 @@
 package qa.training.selenium;
 
 import org.junit.Test;
-import org.junit.runners.model.TestClass;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.io.File;
-import java.net.URISyntaxException;
 import java.util.List;
 
 import static org.junit.Assert.*;
@@ -16,7 +14,7 @@ import static org.junit.Assert.*;
 public class AddProductTest extends BaseTest {
 
     @Test
-    public void addProductTest() throws URISyntaxException {
+    public void addProductTest(){
         loginAdmin();
         driver.findElement(By.cssSelector("#app- a[href*=catalog]")).click();
         int count = getProductsCount();
