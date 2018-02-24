@@ -6,6 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidSelectorException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -25,6 +27,8 @@ public class BaseTest {
     @Before
     public void start() {
         driver = new ChromeDriver();
+        //driver = new FirefoxDriver();
+        //driver = new InternetExplorerDriver();
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         wait = new WebDriverWait(driver, 10);
     }
@@ -68,4 +72,5 @@ public class BaseTest {
         Collections.sort(sortedList);
         assertEquals("Список не отсортирован по алфавиту", sortedList, list);
     }
+
 }
