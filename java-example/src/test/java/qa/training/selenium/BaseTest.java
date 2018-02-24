@@ -6,10 +6,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.InvalidSelectorException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.concurrent.TimeUnit;
+
+import static org.junit.Assert.assertEquals;
 
 public class BaseTest {
 
@@ -44,5 +50,22 @@ public class BaseTest {
         } catch (InvalidSelectorException e) {
             return false;
         }
+    }
+
+    public void loginAdmin() {
+        String login = "admin";
+        String password = "admin";
+
+        driver.get("http://localhost/litecart/admin/");
+        driver.findElement(By.name("username")).sendKeys(login);
+        driver.findElement(By.name("password")).sendKeys(password);
+        driver.findElement(By.name("login")).click();
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.cssSelector("a[href*=logout]")));
+    }
+
+    public void assertSortedList(List<String> list) {
+        List<String> sortedList = new ArrayList<>(list);
+        Collections.sort(sortedList);
+        assertEquals("Список не отсортирован по алфавиту", sortedList, list);
     }
 }
