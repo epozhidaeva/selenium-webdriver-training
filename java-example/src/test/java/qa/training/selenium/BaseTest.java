@@ -11,8 +11,12 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.NoSuchElementException;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertEquals;
@@ -37,7 +41,7 @@ public class BaseTest {
         driver = null;
     }
 
-    public boolean isElemetPresent(By locator) {
+    public boolean isElementPresent(By locator) {
         try {
             driver.findElement(locator);
             return true;
@@ -46,7 +50,7 @@ public class BaseTest {
         }
     }
 
-    public boolean areElemetsPresent(By locator) {
+    public boolean areElementsPresent(By locator) {
         try {
             return driver.findElements(locator).size() > 0;
         } catch (InvalidSelectorException e) {
