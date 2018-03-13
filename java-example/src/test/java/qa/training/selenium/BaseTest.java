@@ -35,7 +35,7 @@ public class BaseTest {
         wait = new WebDriverWait(driver, 10);
     }
 
-    //@After
+    @After
     public void stop() {
         driver.quit();
         driver = null;
